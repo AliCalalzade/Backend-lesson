@@ -1,0 +1,90 @@
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+ul li {
+    cursor: pointer;
+}
+
+.head {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.about {
+    width: 70%;
+    margin: 20px auto;
+}
+
+.blogs {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 40%;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 120px;
+    gap: 20px;
+}
+
+.Description {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: none;
+
+    h2 {
+        font-family: fantasy;
+        position: absolute;
+        top: 20px;
+        right: 50px;
+        cursor: pointer;
+    }
+
+    h1 {
+        position: absolute;
+        top: 30%;
+        margin-left: 10%;
+        font-size: 40px;
+    }
+
+    p {
+        position: absolute;
+        top: 40%;
+        margin-left: 10%;
+        font-size: 20px;
+    }
+
+    button {
+        position: absolute;
+        top: 48%;
+        margin-left: 10%;
+        width: 60px;
+        height: 40px;
+        background-color: red;
+        border-radius: 20px;
+        border: 2px solid black;
+        font-size: 20px;
+        cursor: pointer;
+    }
+}

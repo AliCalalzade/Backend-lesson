@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anasayfa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="head">
+        <h1>Node js blog</h1>
+        <ul>
+            <a href="index.html">
+                <li>anasayfa</li>
+            </a>
+            <a href="about.html">
+                <li>hakkımızda</li>
+            </a>
+            <a href="login.html" id="auth">
+                <li>login</li>
+            </a>
+            <a href="Admin.html" id="admin">
+                <li>Admin</li>
+            </a>
+        </ul>
+    </div>
+    <hr>
+    <h1 style="margin-left: 20px;">Bloglar</h1>
+    <ul class="blogs" id="blogs">
+    </ul>
+    <div class="Description" id="Description">
+        <h2 onclick="Close()">X</h2>
+        <h1 id="title">Title</h1>
+        <p id="long">Long description</p>
+        <button onclick="Delete()">Sil</button>
+    </div>
+    <script src="./main.js">
+    </script>
+</body>
+
+</html>

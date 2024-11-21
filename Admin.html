@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="head">
+        <h1>Node js blog</h1>
+        <ul>
+            <a href="index.html">
+                <li>anasayfa</li>
+            </a>
+            <a href="about.html">
+                <li>hakkımızda</li>
+            </a>
+            <a href="login.html" id="auth">
+                <li>login</li>
+            </a>
+            <a href="Admin.html" id="admin">
+                <li>Admin</li>
+            </a>
+        </ul>
+    </div>
+    <hr>
+    <form>
+        <h1>Add Blog</h1>
+        <input id="input1" type="text" name="title" placeholder="başlık" required style="padding-left: 20px;">
+        <input id="input2" type="text" name="short" placeholder="kısa açiklama" required style="padding-left: 20px;">
+        <input id="input3" type="text" name="long" placeholder="uzun açıklama" required style="padding-left: 20px;">
+        <input id="add" type="submit" value="ekle">
+    </form>
+    <script>
+        if (getCookie('jwt')) {
+            let auth = document.getElementById('auth')
+            auth.href = '#'
+            auth.textContent = 'logOut'
+            auth.addEventListener('click', () => {
+                document.cookie = `jwt=; path=/; max-age=0; SameSite=Strict;`;
+                auth.href = 'login.html'
+                auth.textContent = 'login'
+                document.getElementById('admin').style.display = 'none'
+            })
+        } else {
+            document.getElementById('admin').style.display = 'none'
+        }
+        function getCookie(name) {
+            const cookies = document.cookie.split('; ');
+            for (let cookie of cookies) {
+                const [key, value] = cookie.split('=');
+                if (key === name) {
+                    return value;
+                }
+            }
+            return null;
+        }
+        document.getElementById('add').addEventListener('click', (e) => {
+            e.preventDefault()
+            let input = document.querySelector('#input1').value
+            let input2 = document.querySelector('#input2').value
+            let input3 = document.querySelector('#input3').value
+            console.log(typeof input.trim())
+            if (input.trim() !== "" && input2.trim() !== "" && input3.trim() !== "") {
+                fetch('http://localhost:3000/admin/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${getCookie('jwt')}`,
+                    },
+                    body: JSON.stringify({
+                        title: input.trim(),
+                        short: input2.trim(),
+                        long: input3.trim()
+                    }),
+                })
+                    .then(() => window.location.href = './index.html')
+                    .catch((err) => console.log(err))
+                console.log(true)
+            } else {
+                console.log(false)
+            }
+        }) 
+    </script>
+</body>
+
+</html>
